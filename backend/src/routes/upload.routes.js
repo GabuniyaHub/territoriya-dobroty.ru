@@ -14,7 +14,7 @@ router.post('/', (req, res) => {
       return res.status(400).json({ error: 'Файл не загружен' });
     }
 
-    return res.json({ imageUrl: `/images/${req.file.filename}` });
+    return res.json({ imageUrl: `/public/images/${req.file.filename}` });
   });
 });
 

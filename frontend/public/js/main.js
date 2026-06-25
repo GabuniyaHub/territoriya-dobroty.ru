@@ -17,6 +17,7 @@ const refreshAnimalsBtn = document.getElementById('refresh-animals');
 const showAddAnimalBtn = document.getElementById('show-add-animal');
 const logoutAdminBtn = document.getElementById('logout-admin');
 const adminTrackBtn = document.getElementById('admin-track-cta');
+const adminTrackAddBtn = document.getElementById('admin-track-cta-add');
 const animalFormPanel = document.getElementById('animal-form-panel');
 const animalEditForm = document.getElementById('animal-edit-form');
 const cancelAnimalEditBtn = document.getElementById('cancel-animal-edit');
@@ -136,11 +137,13 @@ async function loadAnimals(isAdmin = false) {
 
 // Обновить список животных
 refreshAnimalsBtn?.addEventListener('click', async () => {
+  await trackEvent('admin_click_refresh', 'refresh-animals', 1).catch(() => {});
   await loadAnimals(true);
 });
 
 // Показать форму добавления животного
-showAddAnimalBtn?.addEventListener('click', () => {
+showAddAnimalBtn?.addEventListener('click', async () => {
+  await trackEvent('admin_click_show_add', 'show-add-animal', 1).catch(() => {});
   animalEditForm.reset();
   document.querySelector('input[name="id"]').value = '';
   animalFormPanel.classList.remove('hidden');
@@ -224,8 +227,10 @@ animalEditForm?.addEventListener('submit', async (e) => {
   try {
     if (animalId) {
       await updateAnimal(Number(animalId), data);
+      await trackEvent('admin_click_save', 'update-animal', 1).catch(() => {});
     } else {
       await createAnimal(data);
+      await trackEvent('admin_click_save', 'create-animal', 1).catch(() => {});
     }
     animalFormResult.textContent = 'Сохранено!';
     animalFormResult.classList.remove('text-red-500');
@@ -247,6 +252,16 @@ adminTrackBtn?.addEventListener('click', async () => {
   try {
     await trackEvent('admin_cta_click', 'admin-panel-cta', 1);
     alert('Событие отправлено (аналитика)');
+  } catch (err) {
+    console.error('Analytics error', err);
+    alert('Ошибка отправки аналитики');
+  }
+});
+
+adminTrackAddBtn?.addEventListener('click', async () => {
+  try {
+    await trackEvent('admin_cta_click', 'admin-panel-add', 1);
+    alert('Событие добавления отправлено');
   } catch (err) {
     console.error('Analytics error', err);
     alert('Ошибка отправки аналитики');

@@ -7,6 +7,14 @@ function buildImageUrl(image) {
     return image;
   }
 
+  if (image.startsWith('/public/images/')) {
+    return image.replace('/public/images/', '/images/');
+  }
+
+  if (image.startsWith('/images/')) {
+    return image;
+  }
+
   if (image.startsWith('/')) {
     return image;
   }

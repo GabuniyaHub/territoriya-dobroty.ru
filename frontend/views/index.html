@@ -167,11 +167,11 @@
     </div>
 
     <!-- Герой -->
-    <section class="min-h-screen relative overflow-hidden">
-        <div class="w-full h-[70vh] relative">
+    <section class="relative overflow-hidden md:min-h-screen">
+        <div class="w-full h-[35vh] sm:h-[45vh] md:h-[70vh] relative">
             <img src="/public/images/Волонтерское объединение помощи (6).png" 
                 alt="Волонтерское объединение помощи бездомным животным" 
-                class="w-full h-full object-cover">
+                class="w-full h-full object-cover object-center">
             <div class="absolute inset-0 bg-gradient-to-b from-[#4A1270]/30 via-transparent to-transparent"></div>
         </div>
 
@@ -256,7 +256,11 @@
                         <button id="refresh-animals" class="btn-orange text-white px-4 py-3 rounded-full font-semibold transition">Обновить список</button>
                         <button id="show-add-animal" class="btn-purple text-white px-4 py-3 rounded-full font-semibold transition">Добавить животное</button>
                         <button id="logout-admin" class="bg-red-500 text-white px-4 py-3 rounded-full font-semibold transition hover:bg-red-600">Выйти</button>
-                        <button id="admin-track-cta" class="bg-white border border-purple text-purple px-4 py-3 rounded-full font-semibold transition hover:bg-purple hover:text-white">Отслеживание CTA</button>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-3 items-center">
+                        <span class="text-sm text-gray-500">Аналитика:</span>
+                        <button id="admin-track-cta" class="bg-white border border-purple text-purple px-4 py-3 rounded-full font-semibold transition hover:bg-purple hover:text-white">CTA событие</button>
+                        <button id="admin-track-cta-add" class="bg-white border border-purple text-purple px-4 py-3 rounded-full font-semibold transition hover:bg-purple hover:text-white">CTA добавить</button>
                     </div>
                 </div>
             </div>
