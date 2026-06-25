@@ -224,134 +224,57 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-purple mb-2 font-['Playfair_Display']">Наши подопечные</h2>
             <p class="text-center text-gray-500 mb-12">Они ждут своего человека — 15 хвостиков, и каждый особенный</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Пуша -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
-                    <img class="animal-img w-full" src="/public/images/photo_1_2026-04-02_23-48-40.jpg" alt="Пуша">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-purple">Пуша</h3>
-                        <p class="text-gray-600 text-sm mb-3">Девочка, 2 года, ласковая, дружелюбная</p>
-                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+            <div id="admin-login-panel" class="max-w-xl mx-auto mb-8 bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+                <h3 class="text-xl font-bold text-purple mb-4">Админ-доступ</h3>
+                <p class="text-gray-500 mb-4">Войдите, чтобы видеть кнопки редактирования животных.</p>
+                <form id="admin-login-form" class="grid gap-4">
+                    <input name="email" type="email" value="admin@territoriya-dobroty.ru" placeholder="Email" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
+                    <input name="password" type="password" placeholder="Пароль" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
+                    <button type="submit" class="btn-purple text-white py-3 rounded-xl font-semibold transition">Войти как админ</button>
+                </form>
+                <p id="admin-login-result" class="text-xs text-gray-500 mt-3">Пользуйтесь только на защищённом сайте.</p>
+            </div>
+
+            <div id="admin-panel" class="hidden max-w-3xl mx-auto mb-8 p-6 bg-white rounded-3xl shadow-sm border border-purple/20">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-purple">Админ-панель</h3>
+                        <p class="text-gray-500 text-sm">Пользователь с правами редактирования.</p>
                     </div>
-                </div>
-                <!-- Савелий -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
-                    <img class="animal-img w-full" src="/public/images/photo_2_2026-04-02_23-48-40.jpg" alt="Савелий">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-purple">Савелий</h3>
-                        <p class="text-gray-600 text-sm mb-3">Мальчик, 1.5 года, спокойный, ласковый</p>
-                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
-                    </div>
-                </div>
-                <!-- Изи -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
-                    <img class="animal-img w-full" src="/public/images/photo_3_2026-04-02_23-48-40.jpg" alt="Изи">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-purple">Изи</h3>
-                        <p class="text-gray-600 text-sm mb-3">Мальчик, 3 года, активный, весёлый</p>
-                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
-                    </div>
-                </div>
-                <!-- Гарфилд -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
-                    <img class="animal-img w-full" src="/public/images/photo_4_2026-04-02_23-48-40.jpg" alt="Гарфилд">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-purple">Гарфилд</h3>
-                        <p class="text-gray-600 text-sm mb-3">Мальчик, 4 года, спокойный, любит внимание</p>
-                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
-                    </div>
-                </div>
-                <!-- Маффин -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
-                    <img class="animal-img w-full" src="/public/images/photo_5_2026-04-02_23-48-40.jpg" alt="Маффин">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-purple">Маффин</h3>
-                        <p class="text-gray-600 text-sm mb-3">Девочка, 1 год, игривая, любопытная</p>
-                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
-                    </div>
-                </div>
-                <!-- Флин -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
-                    <img class="animal-img w-full" src="/public/images/photo_1_2026-04-02_23-50-01.jpg" alt="Флин">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-purple">Флин</h3>
-                        <p class="text-gray-600 text-sm mb-3">Мальчик, 2 года, энергичный, игривый</p>
-                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
-                    </div>
-                </div>
-                <!-- Мия -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
-                    <img class="animal-img w-full" src="/public/images/photo_2_2026-04-02_23-50-01.jpg" alt="Мия">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-purple">Мия</h3>
-                        <p class="text-gray-600 text-sm mb-3">Девочка, 1.5 года, нежная, ласковая</p>
-                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
-                    </div>
-                </div>
-                <!-- Декабрин -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
-                    <img class="animal-img w-full" src="/public/images/photo_3_2026-04-02_23-50-01.jpg" alt="Декабрин">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-purple">Декабрин</h3>
-                        <p class="text-gray-600 text-sm mb-3">Мальчик, 3 года, спокойный, добрый</p>
-                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
-                    </div>
-                </div>
-                <!-- Манник -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
-                    <img class="animal-img w-full" src="/public/images/photo_5_2026-04-02_23-50-01.jpg" alt="Манник">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-purple">Манник</h3>
-                        <p class="text-gray-600 text-sm mb-3">Мальчик, 4 года, сладкий, как пирожок</p>
-                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
-                    </div>
-                </div>
-                <!-- Чижик -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
-                    <img class="animal-img w-full" src="/public/images/photo_6_2026-04-02_23-50-01.jpg" alt="Чижик">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-purple">Чижик</h3>
-                        <p class="text-gray-600 text-sm mb-3">Мальчик, 2 года, маленький и энергичный</p>
-                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
-                    </div>
-                </div>
-                <!-- Марта -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
-                    <img class="animal-img w-full" src="/public/images/photo_7_2026-04-02_23-50-01.jpg" alt="Марта">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-purple">Марта</h3>
-                        <p class="text-gray-600 text-sm mb-3">Девочка, 5 лет, спокойная, мудрая</p>
-                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
-                    </div>
-                </div>
-                <!-- Эбби -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
-                    <img class="animal-img w-full" src="/public/images/photo_8_2026-04-02_23-50-01.jpg" alt="Эбби">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-purple">Эбби</h3>
-                        <p class="text-gray-600 text-sm mb-3">Девочка, 3 года, активная, весёлая</p>
-                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
-                    </div>
-                </div>
-                <!-- Черника -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
-                    <img class="animal-img w-full" src="/public/images/photo_9_2026-04-02_23-50-01.jpg" alt="Черника">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-purple">Черника</h3>
-                        <p class="text-gray-600 text-sm mb-3">Девочка, 1 год, ягодная сладость, игривая</p>
-                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
-                    </div>
-                </div>
-                <!-- Ирма -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
-                    <img class="animal-img w-full" src="/public/images/photo_2026-04-02_23-43-32.jpg" alt="Ирма">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-purple">Ирма</h3>
-                        <p class="text-gray-600 text-sm mb-3">Девочка, 3 года, загадочная, нежная</p>
-                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+                    <div class="flex flex-wrap gap-3">
+                        <button id="refresh-animals" class="btn-orange text-white px-4 py-3 rounded-full font-semibold transition">Обновить список</button>
+                        <button id="show-add-animal" class="btn-purple text-white px-4 py-3 rounded-full font-semibold transition">Добавить животное</button>
+                        <button id="logout-admin" class="bg-red-500 text-white px-4 py-3 rounded-full font-semibold transition hover:bg-red-600">Выйти</button>
                     </div>
                 </div>
             </div>
+
+            <div id="animal-form-panel" class="hidden max-w-3xl mx-auto mb-8 p-6 bg-white rounded-3xl shadow-sm border border-orange/20">
+                <h3 class="text-xl font-bold text-purple mb-4">Форма животного</h3>
+                <form id="animal-edit-form" class="grid gap-4">
+                    <input type="hidden" name="id" value="">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <input name="name" type="text" placeholder="Имя" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
+                        <input name="age" type="text" placeholder="Возраст" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <select name="gender" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white">
+                            <option value="female">Девочка</option>
+                            <option value="male">Мальчик</option>
+                        </select>
+                        <input name="image" type="text" placeholder="Имя файла изображения" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
+                    </div>
+                    <input name="traits" type="text" placeholder="Характер" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
+                    <textarea name="description" rows="3" placeholder="Описание" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required></textarea>
+                    <div class="flex flex-wrap gap-3">
+                        <button type="submit" class="btn-orange text-white px-6 py-3 rounded-full font-semibold transition">Сохранить</button>
+                        <button type="button" id="cancel-animal-edit" class="bg-gray-200 text-gray-700 px-6 py-3 rounded-full font-semibold transition hover:bg-gray-300">Отменить</button>
+                    </div>
+                    <p id="animal-form-result" class="text-xs text-gray-500"></p>
+                </form>
+            </div>
+
+            <div id="animals-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
             <div class="text-center mt-8">
                 <p class="text-gray-500 text-sm">⭐ Всего 15 животных ищут дом. Поделитесь их историями, помогите найти семью!</p>
             </div>
@@ -434,19 +357,19 @@
                 <div>
                     <form id="contact-form">
                         <div class="mb-4">
-                            <input type="text" placeholder="Ваше имя" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
+                            <input name="name" type="text" placeholder="Ваше имя" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
                         </div>
                         <div class="mb-4">
-                            <input type="email" placeholder="Email" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
+                            <input name="email" type="email" placeholder="Email" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
                         </div>
                         <div class="mb-4">
-                            <textarea placeholder="Сообщение" rows="4" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white"></textarea>
+                            <textarea name="message" placeholder="Сообщение" rows="4" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required></textarea>
                         </div>
                         <button type="submit" class="w-full btn-purple text-white py-3 rounded-xl font-semibold transition flex items-center justify-center gap-2">
                             <i class="fas fa-paper-plane"></i> Отправить
                         </button>
                     </form>
-                    <p class="text-xs text-gray-400 text-center mt-3">*Форма работает в тестовом режиме</p>
+                    <p id="contact-result" class="text-xs text-gray-400 text-center mt-3">*Форма работает в тестовом режиме</p>
                 </div>
                 <div>
                     <h3 class="text-xl font-bold text-purple mb-4">Контактная информация</h3>
@@ -491,10 +414,40 @@
     </footer>
 
     <script>
-        document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+        document.getElementById('contact-form')?.addEventListener('submit', async function(e) {
             e.preventDefault();
-            alert('Спасибо за сообщение! Мы свяжемся с вами в ближайшее время.');
-            this.reset();
+            const result = document.getElementById('contact-result');
+            const formData = new FormData(this);
+
+            result.textContent = 'Отправка...';
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        message: formData.get('message'),
+                    }),
+                });
+
+                const data = await response.json();
+                if (!response.ok) {
+                    throw new Error(data.error || 'Ошибка отправки');
+                }
+
+                result.textContent = 'Спасибо! Мы получили ваше сообщение.';
+                result.classList.remove('text-red-500');
+                result.classList.add('text-green-500');
+                this.reset();
+            } catch (error) {
+                result.textContent = 'Ошибка: ' + error.message;
+                result.classList.remove('text-green-500');
+                result.classList.add('text-red-500');
+            }
         });
     </script>
 
