@@ -136,14 +136,35 @@
     <!-- Навигация -->
     <nav class="bg-white shadow-sm sticky top-0 z-50 border-b-2 border-orange">
         <div class="container mx-auto px-4">
-            <div class="flex justify-center gap-8 py-3 flex-wrap">
+            <div class="flex justify-center gap-8 py-3 flex-wrap items-center">
                 <a href="#about" class="text-purple hover:text-orange font-medium transition border-b-2 border-transparent hover:border-orange pb-1">О нас</a>
                 <a href="#animals" class="text-purple hover:text-orange font-medium transition border-b-2 border-transparent hover:border-orange pb-1">Подопечные</a>
                 <a href="#help" class="text-purple hover:text-orange font-medium transition border-b-2 border-transparent hover:border-orange pb-1">Помочь</a>
                 <a href="#contacts" class="text-purple hover:text-orange font-medium transition border-b-2 border-transparent hover:border-orange pb-1">Контакты</a>
+                <button id="open-admin-modal" class="text-purple hover:text-orange font-medium transition border-b-2 border-transparent hover:border-orange pb-1 text-sm">
+                    <i class="fas fa-lock mr-1"></i> Админ
+                </button>
             </div>
         </div>
     </nav>
+
+    <!-- Модалка входа админа -->
+    <div id="admin-modal" class="hidden fixed inset-0 bg-black/50 z-[100] flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 shadow-lg max-w-md w-full">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-purple">Админ-доступ</h3>
+                <button id="close-admin-modal" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <form id="admin-login-form" class="grid gap-4">
+                <input name="email" type="email" value="admin@territoriya-dobroty.ru" placeholder="Email" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
+                <input name="password" type="password" placeholder="Пароль" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
+                <button type="submit" class="btn-purple text-white py-3 rounded-xl font-semibold transition">Войти</button>
+            </form>
+            <p id="admin-login-result" class="text-xs text-gray-500 mt-3 text-center"></p>
+        </div>
+    </div>
 
     <!-- Герой -->
     <section class="min-h-screen relative overflow-hidden">
@@ -224,16 +245,6 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-purple mb-2 font-['Playfair_Display']">Наши подопечные</h2>
             <p class="text-center text-gray-500 mb-12">Они ждут своего человека — 15 хвостиков, и каждый особенный</p>
-            <div id="admin-login-panel" class="max-w-xl mx-auto mb-8 bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
-                <h3 class="text-xl font-bold text-purple mb-4">Админ-доступ</h3>
-                <p class="text-gray-500 mb-4">Войдите, чтобы видеть кнопки редактирования животных.</p>
-                <form id="admin-login-form" class="grid gap-4">
-                    <input name="email" type="email" value="admin@territoriya-dobroty.ru" placeholder="Email" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
-                    <input name="password" type="password" placeholder="Пароль" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
-                    <button type="submit" class="btn-purple text-white py-3 rounded-xl font-semibold transition">Войти как админ</button>
-                </form>
-                <p id="admin-login-result" class="text-xs text-gray-500 mt-3">Пользуйтесь только на защищённом сайте.</p>
-            </div>
 
             <div id="admin-panel" class="hidden max-w-3xl mx-auto mb-8 p-6 bg-white rounded-3xl shadow-sm border border-purple/20">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -451,6 +462,7 @@
         });
     </script>
 
+    <script type="module" src="/public/js/main.js"></script>
     <!-- Скрипт Mixplat для страницы пожертвований -->
     <script src="https://widgets.donation.ru/wloader/293d28d0-1ace-4773-9275-6892bb938d93/wloader.js" async></script>
 

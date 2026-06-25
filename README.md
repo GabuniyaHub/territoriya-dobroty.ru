@@ -21,6 +21,7 @@ cd backend
 npm install
 npx prisma generate
 npx prisma migrate dev --name init
+npm run seed
 ```
 
 ### Запуск
@@ -104,14 +105,15 @@ cd /var/www/territoriya-dobroty.ru/backend
 npm install
 ```
 
-### 4. Сгенерируйте Prisma-клиент и запустите миграции
+### 4. Сгенерируйте Prisma-клиент, запустите миграции и инициализируйте данные
 
 ```bash
 npx prisma generate
 npx prisma migrate deploy
+npm run seed
 ```
 
-> После первого запуска в `backend/prisma/dev.db` будет создана база данных SQLite.
+> После первого запуска в `backend/prisma/dev.db` будет создана база данных SQLite с 15 животными для отображения.
 
 ### 5. Запустите backend как сервис
 
