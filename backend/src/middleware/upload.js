@@ -2,13 +2,15 @@ const fs = require('fs');
 const multer = require('multer');
 const path = require('path');
 
+// АБСОЛЮТНЫЙ ПУТЬ — гарантированно правильный
+const UPLOAD_DIR = '/var/www/territoriya-dobroty.ru/frontend/public/images';
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const dest = path.join(__dirname, '..', '..', 'frontend', 'public', 'images');
     try {
-      fs.mkdirSync(dest, { recursive: true });
+      fs.mkdirSync(UPLOAD_DIR, { recursive: true });
     } catch (e) {}
-    cb(null, dest);
+    cb(null, UPLOAD_DIR);
   },
   filename: function (req, file, cb) {
     const safeName = path.basename(file.originalname);
