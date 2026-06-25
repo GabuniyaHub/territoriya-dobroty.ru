@@ -1,25 +1,25 @@
 function buildImageUrl(image) {
-  if (!image) {
-    return '/images/photo_1_2026-04-02_23-48-40.jpg';
-  }
+    if (!image) {
+      return '/public/images/photo_1_2026-04-02_23-48-40.jpg';
+    }
 
-  if (image.startsWith('http')) {
-    return image;
-  }
+    if (image.startsWith('http')) {
+      return image;
+    }
 
-  if (image.startsWith('/public/images/')) {
-    return image.replace('/public/images/', '/images/');
-  }
+    if (image.startsWith('/public/images/')) {
+      return image;
+    }
 
-  if (image.startsWith('/images/')) {
-    return image;
-  }
+    if (image.startsWith('/images/')) {
+      return image.replace('/images/', '/public/images/');
+    }
 
-  if (image.startsWith('/')) {
-    return image;
-  }
+    if (image.startsWith('/')) {
+      return `/public/images${image}`;
+    }
 
-  return `/images/${image}`;
+    return `/public/images/${image}`;
 }
 
 function renderAnimals(container, animals, isAdmin, callbacks) {
