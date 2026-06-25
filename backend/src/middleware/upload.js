@@ -13,8 +13,6 @@ const storage = multer.diskStorage({
     cb(null, dest);
   },
   filename: function (req, file, cb) {
-    // Use original filename (sanitized) to preserve name without prefix.
-    // Note: this may overwrite files with the same name. Consider UUIDs if collisions are a concern.
     const safeName = path.basename(file.originalname);
     cb(null, safeName);
   },
@@ -25,7 +23,7 @@ const upload = multer({
   fileFilter: function (req, file, cb) {
     const allowed = ['image/jpeg', 'image/png', 'image/webp'];
     if (!allowed.includes(file.mimetype)) {
-      return cb(new Error('Только изображения JPEG, PNG и WEBP'));   
+      return cb(new Error('Только изображения JPEG, PNG и WEBP'));
     }
     cb(null, true);
   },

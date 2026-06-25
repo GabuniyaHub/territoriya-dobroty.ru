@@ -1,13 +1,17 @@
 function buildImageUrl(image) {
   if (!image) {
-    return '/public/images/photo_1_2026-04-02_23-48-40.jpg';
+    return '/images/photo_1_2026-04-02_23-48-40.jpg';
   }
 
-  if (image.startsWith('http') || image.startsWith('/')) {
+  if (image.startsWith('http')) {
     return image;
   }
 
-  return `/public/images/${image}`;
+  if (image.startsWith('/')) {
+    return image;
+  }
+
+  return `/images/${image}`;
 }
 
 function renderAnimals(container, animals, isAdmin, callbacks) {
