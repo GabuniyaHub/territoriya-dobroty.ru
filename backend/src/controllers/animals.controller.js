@@ -6,10 +6,16 @@ exports.getAll = async (req, res) => {
 };
 
 exports.getById = async (req, res) => {
-  const animal = await animalsService.getById(Number(req.params.id));
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id <= 0) {
+    return res.status(404).json({ error: 'Animal not found' });
+  }
+
+  const animal = await animalsService.getById(id);
   if (!animal) {
     return res.status(404).json({ error: 'Animal not found' });
   }
+
   res.json(animal);
 };
 
@@ -19,11 +25,21 @@ exports.create = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-  const animal = await animalsService.update(Number(req.params.id), req.body);
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id <= 0) {
+    return res.status(404).json({ error: 'Animal not found' });
+  }
+
+  const animal = await animalsService.update(id, req.body);
   res.json(animal);
 };
 
 exports.remove = async (req, res) => {
-  await animalsService.remove(Number(req.params.id));
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id <= 0) {
+    return res.status(404).json({ error: 'Animal not found' });
+  }
+
+  await animalsService.remove(id);
   res.json({ message: 'Deleted successfully' });
 };

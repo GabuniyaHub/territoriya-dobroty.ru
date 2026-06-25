@@ -273,7 +273,8 @@
                             <option value="female">Девочка</option>
                             <option value="male">Мальчик</option>
                         </select>
-                        <input name="image" type="text" placeholder="Имя файла изображения" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
+                        <!-- скрытое поле для хранения пути изображения; пользователь загружает файл через input[type=file] -->
+                        <input name="image" type="hidden" value="">
                     </div>
                     <div class="grid md:grid-cols-2 gap-4">
                         <label class="flex flex-col gap-2 text-sm text-gray-600">

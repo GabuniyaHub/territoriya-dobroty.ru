@@ -1,9 +1,10 @@
 const jwt = require('jsonwebtoken');
 
 function authMiddleware(req, res, next) {
-  const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
+  const token = req.cookies?.token || (req.headers.authorization && req.headers.authorization.split(' ')[1]);
 
   if (!token) {
+    if (process.env.NODE_ENV !== 'production') console.debug('authMiddleware: missing token');
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
@@ -12,6 +13,7 @@ function authMiddleware(req, res, next) {
     req.user = decoded;
     next();
   } catch (error) {
+    if (process.env.NODE_ENV !== 'production') console.debug('authMiddleware: token verify error', error.message);
     return res.status(401).json({ error: 'Invalid token' });
   }
 }
