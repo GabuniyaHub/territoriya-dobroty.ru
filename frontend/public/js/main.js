@@ -1,4 +1,4 @@
-import { loginAdmin, getProfile, fetchAnimals, createAnimal, updateAnimal, deleteAnimalById, logout, uploadImage } from './api.js';
+import { loginAdmin, getProfile, fetchAnimals, createAnimal, updateAnimal, deleteAnimalById, logout, uploadImage, trackEvent } from './api.js';
 import { renderAnimals } from './animals.js';
 
 let currentAdmin = null;
@@ -16,6 +16,7 @@ const animalCountText = document.getElementById('animal-count-text');
 const refreshAnimalsBtn = document.getElementById('refresh-animals');
 const showAddAnimalBtn = document.getElementById('show-add-animal');
 const logoutAdminBtn = document.getElementById('logout-admin');
+const adminTrackBtn = document.getElementById('admin-track-cta');
 const animalFormPanel = document.getElementById('animal-form-panel');
 const animalEditForm = document.getElementById('animal-edit-form');
 const cancelAnimalEditBtn = document.getElementById('cancel-animal-edit');
@@ -238,6 +239,17 @@ animalEditForm?.addEventListener('submit', async (e) => {
     animalFormResult.textContent = 'Ошибка: ' + error.message;
     animalFormResult.classList.remove('text-green-500');
     animalFormResult.classList.add('text-red-500');
+  }
+});
+
+// Admin CTA analytics
+adminTrackBtn?.addEventListener('click', async () => {
+  try {
+    await trackEvent('admin_cta_click', 'admin-panel-cta', 1);
+    alert('Событие отправлено (аналитика)');
+  } catch (err) {
+    console.error('Analytics error', err);
+    alert('Ошибка отправки аналитики');
   }
 });
 

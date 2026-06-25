@@ -68,6 +68,13 @@ async function uploadImage(file) {
   });
 }
 
+async function trackEvent(event, label, value) {
+  return request('/analytics/track', {
+    method: 'POST',
+    body: { event, label, value },
+  });
+}
+
 async function createAnimal(data) {
   return request('/animals', {
     method: 'POST',
@@ -88,4 +95,4 @@ async function deleteAnimalById(id) {
   });
 }
 
-export { sendContactMessage, loginAdmin, getProfile, fetchAnimals, createAnimal, updateAnimal, deleteAnimalById, logout, uploadImage };
+export { sendContactMessage, loginAdmin, getProfile, fetchAnimals, createAnimal, updateAnimal, deleteAnimalById, logout, uploadImage, trackEvent };

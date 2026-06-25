@@ -13,8 +13,10 @@ const storage = multer.diskStorage({
     cb(null, dest);
   },
   filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, `${uniqueSuffix}-${file.originalname}`);
+    // Use original filename (sanitized) to preserve name without prefix.
+    // Note: this may overwrite files with the same name. Consider UUIDs if collisions are a concern.
+    const safeName = path.basename(file.originalname);
+    cb(null, safeName);
   },
 });
 

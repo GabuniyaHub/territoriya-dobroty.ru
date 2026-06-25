@@ -7,6 +7,7 @@ const authRoutes = require('./routes/auth.routes');
 const animalsRoutes = require('./routes/animals.routes');
 const uploadRoutes = require('./routes/upload.routes');
 const contactRoutes = require('./routes/contact.routes');
+const analyticsRoutes = require('./routes/analytics.routes');
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/animals', animalsRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/analytics', analyticsRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found' });
