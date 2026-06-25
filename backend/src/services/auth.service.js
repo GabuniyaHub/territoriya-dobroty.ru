@@ -1,28 +1,29 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const { PrismaClient } = require('@prisma/client');
+
+const prisma = new PrismaClient();
 
 async function login(email, password) {
-  const adminEmail = process.env.ADMIN_EMAIL;
-  const adminPassword = process.env.ADMIN_PASSWORD;
-  const adminPasswordHash = process.env.ADMIN_PASSWORD_HASH;
-
-  if (!adminEmail || (!adminPassword && !adminPasswordHash)) {
-    throw new Error('Администратор не настроен');
+  if (!email || !password) {
+    throw new Error('Email and password are required');
   }
 
-  if (email !== adminEmail) {
+  const user = await prisma.user.findUnique({
+    where: { email },
+  });
+
+  if (!user) {
     throw new Error('Неверный логин или пароль');
   }
 
-  const isValid = adminPasswordHash
-    ? await bcrypt.compare(password, adminPasswordHash)
-    : password === adminPassword;
+  const isValid = await bcrypt.compare(password, user.password);
 
   if (!isValid) {
     throw new Error('Неверный логин или пароль');
   }
 
-  return jwt.sign({ email, isAdmin: true }, process.env.JWT_SECRET, { expiresIn: '7d' });
+  return jwt.sign({ email, isAdmin: user.isAdmin }, process.env.JWT_SECRET, { expiresIn: '7d' });
 }
 
 module.exports = { login };
