@@ -105,6 +105,12 @@
             width: auto;
             object-fit: contain;
         }
+
+        .banner-img {
+            max-height: 200px;
+            width: auto;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body>
@@ -140,10 +146,15 @@
     </nav>
 
     <!-- Герой -->
-    <section class="hero-bg py-20 md:py-28">
+    <section class="hero-bg py-16 md:py-20">
         <div class="container mx-auto px-4 text-center">
-            <img src="/public/images/Логотип на белом фоне.png" alt="Логотип" class="mx-auto mb-6 max-w-xs" onerror="this.style.display='none'">
-            <h2 class="text-4xl md:text-6xl font-bold text-purple mb-4 font-['Playfair_Display']">
+            <!-- Баннер с названием организации -->
+            <img src="/public/images/Волонтерское объединение помощи (6).png" 
+                 alt="Волонтерское объединение помощи бездомным животным" 
+                 class="mx-auto mb-8 banner-img"
+                 onerror="this.style.display='none'">
+
+            <h2 class="text-3xl md:text-5xl font-bold text-purple mb-4 font-['Playfair_Display']">
                 Каждое сердце заслуживает <span class="gradient-text">дома</span>
             </h2>
             <p class="text-lg text-gray-600 max-w-xl mx-auto mb-8">Помогаем бездомным животным обрести семью и заботу</p>
