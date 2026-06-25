@@ -146,14 +146,15 @@
     </nav>
 
     <!-- Герой -->
-    <section class="hero-bg py-16 md:py-20">
-        <div class="container mx-auto px-4 text-center">
-            <!-- Баннер с названием организации -->
+    <section class="hero-bg py-16 md:py-20 relative overflow-hidden">
+        <!-- Баннер на всю ширину -->
+        <div class="absolute inset-0 w-full h-full opacity-10">
             <img src="/public/images/Волонтерское объединение помощи (6).png" 
-                 alt="Волонтерское объединение помощи бездомным животным" 
-                 class="mx-auto mb-8 banner-img"
-                 onerror="this.style.display='none'">
+                alt="Волонтерское объединение помощи бездомным животным" 
+                class="w-full h-full object-cover">
+        </div>
 
+        <div class="container mx-auto px-4 text-center relative z-10">
             <h2 class="text-3xl md:text-5xl font-bold text-purple mb-4 font-['Playfair_Display']">
                 Каждое сердце заслуживает <span class="gradient-text">дома</span>
             </h2>
