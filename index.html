@@ -12,57 +12,142 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
-        body{font-family:'Inter',sans-serif;background:#fdf8f2}
-        *{scroll-behavior:smooth}
-        .hero-bg{background:linear-gradient(135deg,#fef7ef,#fff9f2)}
-        .card-hover{transition:all .3s ease}
-        .card-hover:hover{transform:translateY(-5px);box-shadow:0 20px 30px -10px rgba(0,0,0,.05)}
-        .stats-bg{background:#f5ebe1}
-        .btn-warm{background:#a86f4d;transition:all .2s}
-        .btn-warm:hover{background:#8b5a3e}
-        .animal-img{height:260px;object-fit:cover}
-        .text-warm{color:#8b5a3e}
-        .border-warm{border-color:#e8ddd0}
-        .bg-warm-light{background:#fef9f3}
+
+        :root {
+            --orange: #FF9600;
+            --purple: #4A1270;
+            --purple-dark: #3A0F5A;
+            --light-bg: #FDF8F2;
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light-bg);
+        }
+
+        .bg-purple {
+            background: var(--purple);
+        }
+        .bg-purple-dark {
+            background: var(--purple-dark);
+        }
+        .bg-orange {
+            background: var(--orange);
+        }
+        .text-purple {
+            color: var(--purple);
+        }
+        .text-orange {
+            color: var(--orange);
+        }
+        .border-purple {
+            border-color: var(--purple);
+        }
+        .border-orange {
+            border-color: var(--orange);
+        }
+        .hover-bg-purple:hover {
+            background: var(--purple-dark);
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #FDF8F2, #FFF5E6);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -10px rgba(74, 18, 112, 0.15);
+        }
+
+        .stats-bg {
+            background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+        }
+
+        .btn-orange {
+            background: var(--orange);
+            transition: all 0.2s;
+        }
+        .btn-orange:hover {
+            background: #E88800;
+            transform: scale(1.02);
+        }
+
+        .btn-purple {
+            background: var(--purple);
+            transition: all 0.2s;
+        }
+        .btn-purple:hover {
+            background: var(--purple-dark);
+            transform: scale(1.02);
+        }
+
+        .animal-img {
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--orange), #FF6B00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body>
 
     <!-- Шапка -->
-    <div class="bg-[#8b5a3e] text-white py-6 shadow-md">
+    <header class="bg-purple text-white py-4 shadow-lg">
         <div class="container mx-auto px-4 flex justify-between items-center flex-wrap gap-4">
-            <div>
-                <h1 class="text-2xl md:text-3xl font-bold font-['Playfair_Display']">
-                    <i class="fas fa-paw mr-2"></i>Территория Доброты
-                </h1>
-                <p class="text-sm opacity-90 mt-1">Приют для бездомных животных</p>
+            <div class="flex items-center gap-3">
+                <img src="/public/images/Логотип без фона.png" alt="Логотип Территория Доброты" class="logo-img" onerror="this.style.display='none'">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold font-['Playfair_Display']">
+                        Территория Доброты
+                    </h1>
+                    <p class="text-sm opacity-90 mt-1">Приют для бездомных животных</p>
+                </div>
             </div>
-            <a href="#help" class="bg-[#c97e5a] hover:bg-[#b56b48] px-6 py-2 rounded-full font-semibold transition flex items-center gap-2 shadow-lg">
-                <i class="fas fa-heart text-pink-200"></i> Помочь
+            <a href="#help" class="btn-orange text-white px-6 py-2 rounded-full font-semibold transition flex items-center gap-2 shadow-lg hover:shadow-xl">
+                <i class="fas fa-heart text-white/80"></i> Помочь
             </a>
         </div>
-    </div>
+    </header>
 
     <!-- Навигация -->
-    <div class="bg-white shadow-sm sticky top-0 z-50 border-b border-[#e8ddd0]">
+    <nav class="bg-white shadow-sm sticky top-0 z-50 border-b-2 border-orange">
         <div class="container mx-auto px-4">
             <div class="flex justify-center gap-8 py-3 flex-wrap">
-                <a href="#about" class="text-[#7c5a42] hover:text-[#a86f4d] font-medium transition">О нас</a>
-                <a href="#animals" class="text-[#7c5a42] hover:text-[#a86f4d] font-medium transition">Подопечные</a>
-                <a href="#help" class="text-[#7c5a42] hover:text-[#a86f4d] font-medium transition">Помочь</a>
-                <a href="#contacts" class="text-[#7c5a42] hover:text-[#a86f4d] font-medium transition">Контакты</a>
+                <a href="#about" class="text-purple hover:text-orange font-medium transition border-b-2 border-transparent hover:border-orange pb-1">О нас</a>
+                <a href="#animals" class="text-purple hover:text-orange font-medium transition border-b-2 border-transparent hover:border-orange pb-1">Подопечные</a>
+                <a href="#help" class="text-purple hover:text-orange font-medium transition border-b-2 border-transparent hover:border-orange pb-1">Помочь</a>
+                <a href="#contacts" class="text-purple hover:text-orange font-medium transition border-b-2 border-transparent hover:border-orange pb-1">Контакты</a>
             </div>
         </div>
-    </div>
+    </nav>
 
     <!-- Герой -->
-    <section class="hero-bg py-16 md:py-20">
+    <section class="hero-bg py-20 md:py-28">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-5xl font-bold text-[#7c5a42] mb-4 font-['Playfair_Display']">
-                Каждое сердце заслуживает <span class="text-[#a86f4d]">дома</span>
+            <img src="/public/images/Логотип на белом фоне.png" alt="Логотип" class="mx-auto mb-6 max-w-xs" onerror="this.style.display='none'">
+            <h2 class="text-4xl md:text-6xl font-bold text-purple mb-4 font-['Playfair_Display']">
+                Каждое сердце заслуживает <span class="gradient-text">дома</span>
             </h2>
-            <p class="text-lg text-[#8b735b] max-w-xl mx-auto mb-8">Помогаем бездомным животным обрести семью и заботу</p>
-            <a href="#help" class="inline-flex items-center gap-2 bg-[#a86f4d] hover:bg-[#8b5a3e] text-white px-8 py-3 rounded-full font-semibold transition shadow-md">
+            <p class="text-lg text-gray-600 max-w-xl mx-auto mb-8">Помогаем бездомным животным обрести семью и заботу</p>
+            <a href="#help" class="btn-orange inline-flex items-center gap-2 text-white px-8 py-3 rounded-full font-semibold transition shadow-md hover:shadow-xl text-lg">
                 <i class="fas fa-paw"></i> Стать другом
             </a>
         </div>
@@ -71,234 +156,234 @@
     <!-- О нас -->
     <section id="about" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-[#7c5a42] mb-2 font-['Playfair_Display']">О нашем приюте</h2>
-            <p class="text-center text-[#9b7a60] mb-12">С заботой о братьях наших меньших с 2026 года</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-purple mb-2 font-['Playfair_Display']">О нашем приюте</h2>
+            <p class="text-center text-gray-500 mb-12">С заботой о братьях наших меньших с 2026 года</p>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border border-[#e8ddd0]">
-                    <div class="text-4xl mb-3 text-[#a86f4d]"><i class="fas fa-hand-holding-heart"></i></div>
-                    <h3 class="text-xl font-bold text-[#7c5a42] mb-2">Кто мы</h3>
-                    <p class="text-[#7e6956] text-sm">АНО «Волонтёрское объединение помощи бездомным животным «Территория доброты»</p>
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border-t-4 border-orange">
+                    <div class="text-5xl mb-3 text-orange"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3 class="text-xl font-bold text-purple mb-2">Кто мы</h3>
+                    <p class="text-gray-600 text-sm">АНО «Волонтёрское объединение помощи бездомным животным «Территория доброты»</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border border-[#e8ddd0]">
-                    <div class="text-4xl mb-3 text-[#a86f4d]"><i class="fas fa-map-marker-alt"></i></div>
-                    <h3 class="text-xl font-bold text-[#7c5a42] mb-2">Где мы</h3>
-                    <p class="text-[#7e6956] text-sm">ХМАО-Югра, Кондинский р-н, пгт. Междуреченский, ул. Титова, 17</p>
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border-t-4 border-purple">
+                    <div class="text-5xl mb-3 text-orange"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3 class="text-xl font-bold text-purple mb-2">Где мы</h3>
+                    <p class="text-gray-600 text-sm">ХМАО-Югра, Кондинский р-н, пгт. Междуреченский, ул. Титова, 17</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border border-[#e8ddd0]">
-                    <div class="text-4xl mb-3 text-[#a86f4d]"><i class="fas fa-calendar-alt"></i></div>
-                    <h3 class="text-xl font-bold text-[#7c5a42] mb-2">Основание</h3>
-                    <p class="text-[#7e6956] text-sm">24 февраля 2026<br>ОГРН: 1268600001207<br>ИНН: 8606019276</p>
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border-t-4 border-orange">
+                    <div class="text-5xl mb-3 text-orange"><i class="fas fa-calendar-alt"></i></div>
+                    <h3 class="text-xl font-bold text-purple mb-2">Основание</h3>
+                    <p class="text-gray-600 text-sm">24 февраля 2026<br>ОГРН: 1268600001207<br>ИНН: 8606019276</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border border-[#e8ddd0]">
-                    <div class="text-4xl mb-3 text-[#a86f4d]"><i class="fas fa-bullseye"></i></div>
-                    <h3 class="text-xl font-bold text-[#7c5a42] mb-2">Наша цель</h3>
-                    <p class="text-[#7e6956] text-sm">Стерилизация, лечение, пристройство в добрые руки</p>
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border-t-4 border-purple">
+                    <div class="text-5xl mb-3 text-orange"><i class="fas fa-bullseye"></i></div>
+                    <h3 class="text-xl font-bold text-purple mb-2">Наша цель</h3>
+                    <p class="text-gray-600 text-sm">Стерилизация, лечение, пристройство в добрые руки</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Статистика -->
-    <div class="stats-bg py-12">
+    <section class="stats-bg py-12">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
                 <div>
-                    <div class="text-3xl md:text-4xl font-bold text-[#7c5a42]">150+</div>
-                    <div class="text-sm text-[#7e6956] mt-1">Спасённых животных</div>
+                    <div class="text-4xl md:text-5xl font-bold">150+</div>
+                    <div class="text-sm opacity-80 mt-1">Спасённых животных</div>
                 </div>
                 <div>
-                    <div class="text-3xl md:text-4xl font-bold text-[#7c5a42]">42</div>
-                    <div class="text-sm text-[#7e6956] mt-1">Нашли дом</div>
+                    <div class="text-4xl md:text-5xl font-bold">42</div>
+                    <div class="text-sm opacity-80 mt-1">Нашли дом</div>
                 </div>
                 <div>
-                    <div class="text-3xl md:text-4xl font-bold text-[#7c5a42]">50+</div>
-                    <div class="text-sm text-[#7e6956] mt-1">Волонтёров</div>
+                    <div class="text-4xl md:text-5xl font-bold">50+</div>
+                    <div class="text-sm opacity-80 mt-1">Волонтёров</div>
                 </div>
                 <div>
-                    <div class="text-3xl md:text-4xl font-bold text-[#7c5a42]">1000+</div>
-                    <div class="text-sm text-[#7e6956] mt-1">Помощников</div>
+                    <div class="text-4xl md:text-5xl font-bold">1000+</div>
+                    <div class="text-sm opacity-80 mt-1">Помощников</div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Подопечные -->
     <section id="animals" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-[#7c5a42] mb-2 font-['Playfair_Display']">Наши подопечные</h2>
-            <p class="text-center text-[#9b7a60] mb-12">Они ждут своего человека — 15 хвостиков, и каждый особенный</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-purple mb-2 font-['Playfair_Display']">Наши подопечные</h2>
+            <p class="text-center text-gray-500 mb-12">Они ждут своего человека — 15 хвостиков, и каждый особенный</p>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Пуша -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-[#e8ddd0]">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
                     <img class="animal-img w-full" src="/public/images/photo_1_2026-04-02_23-48-40.jpg" alt="Пуша">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-[#7c5a42]">Пуша</h3>
-                        <p class="text-[#7e6956] text-sm mb-3">Девочка, 2 года, ласковая, дружелюбная</p>
-                        <a href="#" class="inline-block bg-[#f5ede5] hover:bg-[#e8ddd0] text-[#a86f4d] hover:text-[#8b5a3e] px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+                        <h3 class="text-xl font-bold text-purple">Пуша</h3>
+                        <p class="text-gray-600 text-sm mb-3">Девочка, 2 года, ласковая, дружелюбная</p>
+                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
                     </div>
                 </div>
                 <!-- Савелий -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-[#e8ddd0]">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
                     <img class="animal-img w-full" src="/public/images/photo_2_2026-04-02_23-48-40.jpg" alt="Савелий">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-[#7c5a42]">Савелий</h3>
-                        <p class="text-[#7e6956] text-sm mb-3">Мальчик, 1.5 года, спокойный, ласковый</p>
-                        <a href="#" class="inline-block bg-[#f5ede5] hover:bg-[#e8ddd0] text-[#a86f4d] hover:text-[#8b5a3e] px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+                        <h3 class="text-xl font-bold text-purple">Савелий</h3>
+                        <p class="text-gray-600 text-sm mb-3">Мальчик, 1.5 года, спокойный, ласковый</p>
+                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
                     </div>
                 </div>
                 <!-- Изи -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-[#e8ddd0]">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
                     <img class="animal-img w-full" src="/public/images/photo_3_2026-04-02_23-48-40.jpg" alt="Изи">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-[#7c5a42]">Изи</h3>
-                        <p class="text-[#7e6956] text-sm mb-3">Мальчик, 3 года, активный, весёлый</p>
-                        <a href="#" class="inline-block bg-[#f5ede5] hover:bg-[#e8ddd0] text-[#a86f4d] hover:text-[#8b5a3e] px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+                        <h3 class="text-xl font-bold text-purple">Изи</h3>
+                        <p class="text-gray-600 text-sm mb-3">Мальчик, 3 года, активный, весёлый</p>
+                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
                     </div>
                 </div>
                 <!-- Гарфилд -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-[#e8ddd0]">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
                     <img class="animal-img w-full" src="/public/images/photo_4_2026-04-02_23-48-40.jpg" alt="Гарфилд">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-[#7c5a42]">Гарфилд</h3>
-                        <p class="text-[#7e6956] text-sm mb-3">Мальчик, 4 года, спокойный, любит внимание</p>
-                        <a href="#" class="inline-block bg-[#f5ede5] hover:bg-[#e8ddd0] text-[#a86f4d] hover:text-[#8b5a3e] px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+                        <h3 class="text-xl font-bold text-purple">Гарфилд</h3>
+                        <p class="text-gray-600 text-sm mb-3">Мальчик, 4 года, спокойный, любит внимание</p>
+                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
                     </div>
                 </div>
                 <!-- Маффин -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-[#e8ddd0]">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
                     <img class="animal-img w-full" src="/public/images/photo_5_2026-04-02_23-48-40.jpg" alt="Маффин">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-[#7c5a42]">Маффин</h3>
-                        <p class="text-[#7e6956] text-sm mb-3">Девочка, 1 год, игривая, любопытная</p>
-                        <a href="#" class="inline-block bg-[#f5ede5] hover:bg-[#e8ddd0] text-[#a86f4d] hover:text-[#8b5a3e] px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+                        <h3 class="text-xl font-bold text-purple">Маффин</h3>
+                        <p class="text-gray-600 text-sm mb-3">Девочка, 1 год, игривая, любопытная</p>
+                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
                     </div>
                 </div>
                 <!-- Флин -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-[#e8ddd0]">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
                     <img class="animal-img w-full" src="/public/images/photo_1_2026-04-02_23-50-01.jpg" alt="Флин">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-[#7c5a42]">Флин</h3>
-                        <p class="text-[#7e6956] text-sm mb-3">Мальчик, 2 года, энергичный, игривый</p>
-                        <a href="#" class="inline-block bg-[#f5ede5] hover:bg-[#e8ddd0] text-[#a86f4d] hover:text-[#8b5a3e] px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+                        <h3 class="text-xl font-bold text-purple">Флин</h3>
+                        <p class="text-gray-600 text-sm mb-3">Мальчик, 2 года, энергичный, игривый</p>
+                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
                     </div>
                 </div>
                 <!-- Мия -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-[#e8ddd0]">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
                     <img class="animal-img w-full" src="/public/images/photo_2_2026-04-02_23-50-01.jpg" alt="Мия">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-[#7c5a42]">Мия</h3>
-                        <p class="text-[#7e6956] text-sm mb-3">Девочка, 1.5 года, нежная, ласковая</p>
-                        <a href="#" class="inline-block bg-[#f5ede5] hover:bg-[#e8ddd0] text-[#a86f4d] hover:text-[#8b5a3e] px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+                        <h3 class="text-xl font-bold text-purple">Мия</h3>
+                        <p class="text-gray-600 text-sm mb-3">Девочка, 1.5 года, нежная, ласковая</p>
+                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
                     </div>
                 </div>
                 <!-- Декабрин -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-[#e8ddd0]">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
                     <img class="animal-img w-full" src="/public/images/photo_3_2026-04-02_23-50-01.jpg" alt="Декабрин">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-[#7c5a42]">Декабрин</h3>
-                        <p class="text-[#7e6956] text-sm mb-3">Мальчик, 3 года, спокойный, добрый</p>
-                        <a href="#" class="inline-block bg-[#f5ede5] hover:bg-[#e8ddd0] text-[#a86f4d] hover:text-[#8b5a3e] px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+                        <h3 class="text-xl font-bold text-purple">Декабрин</h3>
+                        <p class="text-gray-600 text-sm mb-3">Мальчик, 3 года, спокойный, добрый</p>
+                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
                     </div>
                 </div>
                 <!-- Манник -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-[#e8ddd0]">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
                     <img class="animal-img w-full" src="/public/images/photo_5_2026-04-02_23-50-01.jpg" alt="Манник">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-[#7c5a42]">Манник</h3>
-                        <p class="text-[#7e6956] text-sm mb-3">Мальчик, 4 года, сладкий, как пирожок</p>
-                        <a href="#" class="inline-block bg-[#f5ede5] hover:bg-[#e8ddd0] text-[#a86f4d] hover:text-[#8b5a3e] px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+                        <h3 class="text-xl font-bold text-purple">Манник</h3>
+                        <p class="text-gray-600 text-sm mb-3">Мальчик, 4 года, сладкий, как пирожок</p>
+                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
                     </div>
                 </div>
                 <!-- Чижик -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-[#e8ddd0]">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
                     <img class="animal-img w-full" src="/public/images/photo_6_2026-04-02_23-50-01.jpg" alt="Чижик">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-[#7c5a42]">Чижик</h3>
-                        <p class="text-[#7e6956] text-sm mb-3">Мальчик, 2 года, маленький и энергичный</p>
-                        <a href="#" class="inline-block bg-[#f5ede5] hover:bg-[#e8ddd0] text-[#a86f4d] hover:text-[#8b5a3e] px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+                        <h3 class="text-xl font-bold text-purple">Чижик</h3>
+                        <p class="text-gray-600 text-sm mb-3">Мальчик, 2 года, маленький и энергичный</p>
+                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
                     </div>
                 </div>
                 <!-- Марта -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-[#e8ddd0]">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
                     <img class="animal-img w-full" src="/public/images/photo_7_2026-04-02_23-50-01.jpg" alt="Марта">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-[#7c5a42]">Марта</h3>
-                        <p class="text-[#7e6956] text-sm mb-3">Девочка, 5 лет, спокойная, мудрая</p>
-                        <a href="#" class="inline-block bg-[#f5ede5] hover:bg-[#e8ddd0] text-[#a86f4d] hover:text-[#8b5a3e] px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+                        <h3 class="text-xl font-bold text-purple">Марта</h3>
+                        <p class="text-gray-600 text-sm mb-3">Девочка, 5 лет, спокойная, мудрая</p>
+                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
                     </div>
                 </div>
                 <!-- Эбби -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-[#e8ddd0]">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
                     <img class="animal-img w-full" src="/public/images/photo_8_2026-04-02_23-50-01.jpg" alt="Эбби">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-[#7c5a42]">Эбби</h3>
-                        <p class="text-[#7e6956] text-sm mb-3">Девочка, 3 года, активная, весёлая</p>
-                        <a href="#" class="inline-block bg-[#f5ede5] hover:bg-[#e8ddd0] text-[#a86f4d] hover:text-[#8b5a3e] px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+                        <h3 class="text-xl font-bold text-purple">Эбби</h3>
+                        <p class="text-gray-600 text-sm mb-3">Девочка, 3 года, активная, весёлая</p>
+                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
                     </div>
                 </div>
                 <!-- Черника -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-[#e8ddd0]">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
                     <img class="animal-img w-full" src="/public/images/photo_9_2026-04-02_23-50-01.jpg" alt="Черника">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-[#7c5a42]">Черника</h3>
-                        <p class="text-[#7e6956] text-sm mb-3">Девочка, 1 год, ягодная сладость, игривая</p>
-                        <a href="#" class="inline-block bg-[#f5ede5] hover:bg-[#e8ddd0] text-[#a86f4d] hover:text-[#8b5a3e] px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+                        <h3 class="text-xl font-bold text-purple">Черника</h3>
+                        <p class="text-gray-600 text-sm mb-3">Девочка, 1 год, ягодная сладость, игривая</p>
+                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
                     </div>
                 </div>
                 <!-- Ирма -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-[#e8ddd0]">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover border border-gray-100 hover:border-orange">
                     <img class="animal-img w-full" src="/public/images/photo_2026-04-02_23-43-32.jpg" alt="Ирма">
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-[#7c5a42]">Ирма</h3>
-                        <p class="text-[#7e6956] text-sm mb-3">Девочка, 3 года, загадочная, нежная</p>
-                        <a href="#" class="inline-block bg-[#f5ede5] hover:bg-[#e8ddd0] text-[#a86f4d] hover:text-[#8b5a3e] px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
+                        <h3 class="text-xl font-bold text-purple">Ирма</h3>
+                        <p class="text-gray-600 text-sm mb-3">Девочка, 3 года, загадочная, нежная</p>
+                        <a href="#help" class="inline-block bg-orange/10 hover:bg-orange text-orange hover:text-white px-4 py-2 rounded-full text-sm font-medium transition">Хочу помочь →</a>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-8">
-                <p class="text-[#7e6956] text-sm">⭐ Всего 15 животных ищут дом. Поделитесь их историями, помогите найти семью!</p>
+                <p class="text-gray-500 text-sm">⭐ Всего 15 животных ищут дом. Поделитесь их историями, помогите найти семью!</p>
             </div>
         </div>
     </section>
 
     <!-- Как помочь -->
-    <section id="help" class="py-16 bg-[#fef9f3]">
+    <section id="help" class="py-16 bg-[#FFF8F0]">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-[#7c5a42] mb-2 font-['Playfair_Display']">Как помочь</h2>
-            <p class="text-center text-[#9b7a60] mb-12">Любая помощь важна</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-purple mb-2 font-['Playfair_Display']">Как помочь</h2>
+            <p class="text-center text-gray-500 mb-12">Любая помощь важна</p>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border border-[#e8ddd0]">
-                    <div class="text-4xl mb-3 text-[#a86f4d]"><i class="fas fa-hand-holding-usd"></i></div>
-                    <h3 class="text-xl font-bold text-[#7c5a42] mb-2">Финансовая помощь</h3>
-                    <p class="text-[#7e6956] text-sm">Пожертвования на корм, лечение, стерилизацию</p>
-                    <p class="text-xs text-[#9b7a60] mt-2"><strong>ИНН 8606019276</strong></p>
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border-t-4 border-orange">
+                    <div class="text-5xl mb-3 text-orange"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h3 class="text-xl font-bold text-purple mb-2">Финансовая помощь</h3>
+                    <p class="text-gray-600 text-sm">Пожертвования на корм, лечение, стерилизацию</p>
+                    <p class="text-xs text-purple/60 mt-2"><strong>ИНН 8606019276</strong></p>
                     <div class="mt-3">
                         <img src="/public/images/qrcode.jpg" alt="QR-код для оплаты" class="mx-auto w-56 h-56 object-contain" onerror="this.style.display='none'">
-                        <p class="text-xs text-[#7e6956] mt-1">QR-код для перевода</p>
+                        <p class="text-xs text-gray-500 mt-1">QR-код для перевода</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border border-[#e8ddd0]">
-                    <div class="text-4xl mb-3 text-[#a86f4d]"><i class="fas fa-cat"></i></div>
-                    <h3 class="text-xl font-bold text-[#7c5a42] mb-2">Корм и вещи</h3>
-                    <p class="text-[#7e6956] text-sm">Сухой/влажный корм, наполнители, лежанки, миски, поводки</p>
-                    <p class="text-xs text-[#9b7a60] mt-2">📦 ул. Титова, 17</p>
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border-t-4 border-purple">
+                    <div class="text-5xl mb-3 text-orange"><i class="fas fa-cat"></i></div>
+                    <h3 class="text-xl font-bold text-purple mb-2">Корм и вещи</h3>
+                    <p class="text-gray-600 text-sm">Сухой/влажный корм, наполнители, лежанки, миски, поводки</p>
+                    <p class="text-xs text-purple/60 mt-2">📦 ул. Титова, 17</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border border-[#e8ddd0]">
-                    <div class="text-4xl mb-3 text-[#a86f4d]"><i class="fas fa-users"></i></div>
-                    <h3 class="text-xl font-bold text-[#7c5a42] mb-2">Волонтёрство</h3>
-                    <p class="text-[#7e6956] text-sm">Выгул, уборка, социализация, помощь в соцсетях</p>
-                    <p class="text-xs text-[#9b7a60] mt-2">📞 +7 (904) 465 09 90</p>
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border-t-4 border-orange">
+                    <div class="text-5xl mb-3 text-orange"><i class="fas fa-users"></i></div>
+                    <h3 class="text-xl font-bold text-purple mb-2">Волонтёрство</h3>
+                    <p class="text-gray-600 text-sm">Выгул, уборка, социализация, помощь в соцсетях</p>
+                    <p class="text-xs text-purple/60 mt-2">📞 +7 (904) 465 09 90</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border border-[#e8ddd0]">
-                    <div class="text-4xl mb-3 text-[#a86f4d]"><i class="fas fa-home"></i></div>
-                    <h3 class="text-xl font-bold text-[#7c5a42] mb-2">Усыновление</h3>
-                    <p class="text-[#7e6956] text-sm">Подарите дом нашему подопечному</p>
-                    <a href="#contacts" class="inline-block text-[#a86f4d] hover:text-[#8b5a3e] text-sm font-medium mt-2">Связаться →</a>
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm card-hover border-t-4 border-purple">
+                    <div class="text-5xl mb-3 text-orange"><i class="fas fa-home"></i></div>
+                    <h3 class="text-xl font-bold text-purple mb-2">Усыновление</h3>
+                    <p class="text-gray-600 text-sm">Подарите дом нашему подопечному</p>
+                    <a href="#contacts" class="inline-block text-orange hover:text-purple text-sm font-medium mt-2 transition">Связаться →</a>
                 </div>
             </div>
 
-            <div class="mt-10 bg-white rounded-2xl p-6 shadow-sm card-hover border border-[#e8ddd0]">
-                <h3 class="text-xl font-bold text-[#7c5a42] mb-4 text-center">Банковские реквизиты для пожертвований</h3>
+            <div class="mt-10 bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100 hover:border-purple">
+                <h3 class="text-xl font-bold text-purple mb-4 text-center">Банковские реквизиты для пожертвований</h3>
                 <div class="grid md:grid-cols-2 gap-4 text-sm">
                     <div>
                         <p><strong>Наименование:</strong> АНО "ТЕРРИТОРИЯ ДОБРОТЫ"</p>
@@ -317,12 +402,12 @@
                 </div>
             </div>
 
-            <div class="mt-10 bg-white rounded-2xl p-6 shadow-sm card-hover border border-[#e8ddd0]">
-                <h3 class="text-xl font-bold text-[#7c5a42] mb-4 text-center">Мы в соцсетях и мессенджерах</h3>
+            <div class="mt-10 bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100 hover:border-orange">
+                <h3 class="text-xl font-bold text-purple mb-4 text-center">Мы в соцсетях и мессенджерах</h3>
                 <div class="flex flex-wrap justify-center gap-6">
-                    <a href="https://vk.com/priyutterritoriyadobroty" target="_blank" class="flex items-center gap-2 text-[#a86f4d] hover:text-[#8b5a3e] transition"><i class="fab fa-vk text-2xl"></i> ВКонтакте</a>
-                    <a href="https://t.me/+DLNHTuiQiq80Yzc6" target="_blank" class="flex items-center gap-2 text-[#a86f4d] hover:text-[#8b5a3e] transition"><i class="fab fa-telegram text-2xl"></i> Telegram-канал</a>
-                    <a href="https://max.ru/join/KbSbKp49L8D4hTajgC_toLWWhRRQWRRMlpVYF4GK81Y" target="_blank" class="flex items-center gap-2 text-[#a86f4d] hover:text-[#8b5a3e] transition"><i class="fas fa-comments text-2xl"></i> Чат поддержки</a>
+                    <a href="https://vk.com/priyutterritoriyadobroty" target="_blank" class="flex items-center gap-2 text-orange hover:text-purple transition"><i class="fab fa-vk text-2xl"></i> ВКонтакте</a>
+                    <a href="https://t.me/+DLNHTuiQiq80Yzc6" target="_blank" class="flex items-center gap-2 text-orange hover:text-purple transition"><i class="fab fa-telegram text-2xl"></i> Telegram-канал</a>
+                    <a href="https://max.ru/join/KbSbKp49L8D4hTajgC_toLWWhRRQWRRMlpVYF4GK81Y" target="_blank" class="flex items-center gap-2 text-orange hover:text-purple transition"><i class="fas fa-comments text-2xl"></i> Чат поддержки</a>
                 </div>
             </div>
         </div>
@@ -331,38 +416,38 @@
     <!-- Контакты -->
     <section id="contacts" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-[#7c5a42] mb-2 font-['Playfair_Display']">Свяжитесь с нами</h2>
-            <p class="text-center text-[#9b7a60] mb-12">Будем рады ответить</p>
-            <div class="grid md:grid-cols-2 gap-8 bg-[#fef9f3] rounded-3xl p-6 md:p-10 shadow-sm border border-[#e8ddd0]">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-purple mb-2 font-['Playfair_Display']">Свяжитесь с нами</h2>
+            <p class="text-center text-gray-500 mb-12">Будем рады ответить</p>
+            <div class="grid md:grid-cols-2 gap-8 bg-[#FFF8F0] rounded-3xl p-6 md:p-10 shadow-sm border border-gray-100">
                 <div>
                     <form id="contact-form">
                         <div class="mb-4">
-                            <input type="text" placeholder="Ваше имя" class="w-full p-3 border border-[#e8ddd0] rounded-xl focus:outline-none focus:border-[#a86f4d] bg-white" required>
+                            <input type="text" placeholder="Ваше имя" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
                         </div>
                         <div class="mb-4">
-                            <input type="email" placeholder="Email" class="w-full p-3 border border-[#e8ddd0] rounded-xl focus:outline-none focus:border-[#a86f4d] bg-white" required>
+                            <input type="email" placeholder="Email" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
                         </div>
                         <div class="mb-4">
-                            <textarea placeholder="Сообщение" rows="4" class="w-full p-3 border border-[#e8ddd0] rounded-xl focus:outline-none focus:border-[#a86f4d] bg-white"></textarea>
+                            <textarea placeholder="Сообщение" rows="4" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white"></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-[#a86f4d] hover:bg-[#8b5a3e] text-white py-3 rounded-xl font-semibold transition flex items-center justify-center gap-2">
+                        <button type="submit" class="w-full btn-purple text-white py-3 rounded-xl font-semibold transition flex items-center justify-center gap-2">
                             <i class="fas fa-paper-plane"></i> Отправить
                         </button>
                     </form>
-                    <p class="text-xs text-[#9b7a60] text-center mt-3">*Форма работает в тестовом режиме</p>
+                    <p class="text-xs text-gray-400 text-center mt-3">*Форма работает в тестовом режиме</p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold text-[#7c5a42] mb-4">Контактная информация</h3>
+                    <h3 class="text-xl font-bold text-purple mb-4">Контактная информация</h3>
                     <div class="space-y-3">
-                        <p class="flex items-center gap-3 text-[#7e6956]"><i class="fas fa-phone w-5 text-[#a86f4d]"></i> +7 (904) 465 09 90</p>
-                        <p class="flex items-center gap-3 text-[#7e6956]"><i class="fas fa-envelope w-5 text-[#a86f4d]"></i> dolli7777@mail.ru</p>
-                        <p class="flex items-start gap-3 text-[#7e6956]"><i class="fas fa-map-marker-alt w-5 text-[#a86f4d] mt-1"></i> ХМАО-Югра, Кондинский р-н,<br>пгт. Междуреченский, ул. Титова, 17</p>
-                        <p class="flex items-center gap-3 text-[#7e6956]"><i class="fas fa-clock w-5 text-[#a86f4d]"></i> Ежедневно 10:00–18:00</p>
-                        <p class="flex items-center gap-3 text-[#7e6956]"><i class="fas fa-user w-5 text-[#a86f4d]"></i> Руководитель: Габуния Галина</p>
+                        <p class="flex items-center gap-3 text-gray-600"><i class="fas fa-phone w-5 text-orange"></i> +7 (904) 465 09 90</p>
+                        <p class="flex items-center gap-3 text-gray-600"><i class="fas fa-envelope w-5 text-orange"></i> dolli7777@mail.ru</p>
+                        <p class="flex items-start gap-3 text-gray-600"><i class="fas fa-map-marker-alt w-5 text-orange mt-1"></i> ХМАО-Югра, Кондинский р-н,<br>пгт. Междуреченский, ул. Титова, 17</p>
+                        <p class="flex items-center gap-3 text-gray-600"><i class="fas fa-clock w-5 text-orange"></i> Ежедневно 10:00–18:00</p>
+                        <p class="flex items-center gap-3 text-gray-600"><i class="fas fa-user w-5 text-orange"></i> Руководитель: Габуния Галина</p>
                     </div>
-                    <div class="mt-6 bg-[#f5ede5] rounded-2xl p-4 text-center">
-                        <i class="fas fa-dog text-2xl text-[#a86f4d]"></i> <i class="fas fa-cat text-2xl text-[#a86f4d] mx-1"></i>
-                        <p class="text-sm text-[#7e6956] mt-2">Приходите знакомиться с нашими подопечными!</p>
+                    <div class="mt-6 bg-orange/10 rounded-2xl p-4 text-center border border-orange/20">
+                        <i class="fas fa-dog text-3xl text-orange"></i> <i class="fas fa-cat text-3xl text-orange mx-2"></i>
+                        <p class="text-sm text-gray-600 mt-2">Приходите знакомиться с нашими подопечными!</p>
                     </div>
                 </div>
             </div>
@@ -370,21 +455,24 @@
     </section>
 
     <!-- Футер -->
-    <footer class="bg-[#7c5a42] text-white py-8 mt-8">
+    <footer class="bg-purple text-white py-8 mt-8">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
-                <div>
-                    <h3 class="text-xl font-bold"><i class="fas fa-paw mr-2"></i>Территория Доброты</h3>
-                    <p class="text-sm opacity-80">Волонтёрское объединение помощи бездомным животным</p>
+                <div class="flex items-center gap-3">
+                    <img src="/public/images/Логотип без фона.png" alt="Логотип" class="h-12 w-auto object-contain" onerror="this.style.display='none'">
+                    <div>
+                        <h3 class="text-xl font-bold"><i class="fas fa-paw mr-2 text-orange"></i>Территория Доброты</h3>
+                        <p class="text-sm opacity-80">Волонтёрское объединение помощи бездомным животным</p>
+                    </div>
                 </div>
                 <div class="flex gap-6">
-                    <a href="#about" class="hover:text-[#f0dfcf] transition">О нас</a>
-                    <a href="#animals" class="hover:text-[#f0dfcf] transition">Подопечные</a>
-                    <a href="#help" class="hover:text-[#f0dfcf] transition">Помочь</a>
-                    <a href="#contacts" class="hover:text-[#f0dfcf] transition">Контакты</a>
+                    <a href="#about" class="hover:text-orange transition">О нас</a>
+                    <a href="#animals" class="hover:text-orange transition">Подопечные</a>
+                    <a href="#help" class="hover:text-orange transition">Помочь</a>
+                    <a href="#contacts" class="hover:text-orange transition">Контакты</a>
                 </div>
             </div>
-            <div class="text-center text-xs opacity-70 pt-4 border-t border-[#9b7a60]">
+            <div class="text-center text-xs opacity-70 pt-4 border-t border-white/20">
                 <p>© 2026 АНО «Территория доброты» | ОГРН 1268600001207 | ИНН 8606019276 | КПП 860601001</p>
             </div>
         </div>
