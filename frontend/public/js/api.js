@@ -8,7 +8,7 @@ async function request(path, options = {}) {
 
   const config = { ...defaultOptions, ...options };
 
-  if (options.body && typeof options.body === 'object') {
+  if (options.body && typeof options.body === 'object' && !(options.body instanceof FormData)) {
     config.body = JSON.stringify(options.body);
     config.headers = { ...config.headers, 'Content-Type': 'application/json' };
   }
@@ -59,6 +59,15 @@ async function logout() {
   });
 }
 
+async function uploadImage(file) {
+  const formData = new FormData();
+  formData.append('image', file);
+  return request('/upload', {
+    method: 'POST',
+    body: formData,
+  });
+}
+
 async function createAnimal(data) {
   return request('/animals', {
     method: 'POST',
@@ -79,4 +88,4 @@ async function deleteAnimalById(id) {
   });
 }
 
-export { sendContactMessage, loginAdmin, getProfile, fetchAnimals, createAnimal, updateAnimal, deleteAnimalById, logout };
+export { sendContactMessage, loginAdmin, getProfile, fetchAnimals, createAnimal, updateAnimal, deleteAnimalById, logout, uploadImage };

@@ -1,4 +1,4 @@
-import { loginAdmin, getProfile, fetchAnimals, createAnimal, updateAnimal, deleteAnimalById, logout } from './api.js';
+import { loginAdmin, getProfile, fetchAnimals, createAnimal, updateAnimal, deleteAnimalById, logout, uploadImage } from './api.js';
 import { renderAnimals } from './animals.js';
 
 let currentAdmin = null;
@@ -11,6 +11,8 @@ const adminLoginForm = document.getElementById('admin-login-form');
 const adminLoginResult = document.getElementById('admin-login-result');
 const adminPanel = document.getElementById('admin-panel');
 const animalsGrid = document.getElementById('animals-grid');
+const animalCountSubtitle = document.getElementById('animal-count-subtitle');
+const animalCountText = document.getElementById('animal-count-text');
 const refreshAnimalsBtn = document.getElementById('refresh-animals');
 const showAddAnimalBtn = document.getElementById('show-add-animal');
 const logoutAdminBtn = document.getElementById('logout-admin');
@@ -65,6 +67,12 @@ adminLoginForm?.addEventListener('submit', async (e) => {
   }
 });
 
+function removeQueryParams() {
+  if (window.location.search) {
+    window.history.replaceState(null, '', window.location.pathname + window.location.hash);
+  }
+}
+
 // Инициализировать админ-режим
 async function initAdminMode() {
   try {
@@ -81,6 +89,28 @@ async function initAdminMode() {
 }
 
 // Загрузить животных
+async function updateAnimalCountText(count) {
+  if (animalCountSubtitle) {
+    if (count === 0) {
+      animalCountSubtitle.textContent = 'Пока нет животных для пристройства. Добавьте питомцев в админ-панели.';
+    } else if (count === 1) {
+      animalCountSubtitle.textContent = 'Сейчас 1 хвостик ищет дом. Поделитесь его историей!';
+    } else {
+      animalCountSubtitle.textContent = `Сейчас ${count} хвостиков ищут дом, и каждый особенный.`;
+    }
+  }
+
+  if (!animalCountText) return;
+
+  if (count === 0) {
+    animalCountText.textContent = '⭐ Пока нет животных, ищущих дом. Добавьте питомцев в админ-панели.';
+  } else if (count === 1) {
+    animalCountText.textContent = '⭐ Сейчас 1 животное ищет дом. Поделитесь его историей, помогите найти семью!';
+  } else {
+    animalCountText.textContent = `⭐ Всего ${count} животных ищут дом. Поделитесь их историями, помогите найти семью!`;
+  }
+}
+
 async function loadAnimals(isAdmin = false) {
   try {
     const animals = await fetchAnimals();
@@ -93,9 +123,13 @@ async function loadAnimals(isAdmin = false) {
         onDelete: handleDeleteAnimal,
       }
     );
+    await updateAnimalCountText(Array.isArray(animals) ? animals.length : 0);
   } catch (error) {
     console.error('Failed to load animals:', error);
     animalsGrid.innerHTML = '<p class="text-red-500">Ошибка загрузки животных</p>';
+    if (animalCountText) {
+      animalCountText.textContent = 'Ошибка загрузки количества животных.';
+    }
   }
 }
 
@@ -159,6 +193,7 @@ animalEditForm?.addEventListener('submit', async (e) => {
   const formData = new FormData(animalEditForm);
   const animalId = formData.get('id');
 
+  const imageFile = animalEditForm.querySelector('input[name="imageFile"]')?.files?.[0];
   const data = {
     name: formData.get('name'),
     age: formData.get('age'),
@@ -167,6 +202,21 @@ animalEditForm?.addEventListener('submit', async (e) => {
     traits: formData.get('traits'),
     description: formData.get('description'),
   };
+
+  if (imageFile) {
+    try {
+      const uploadResult = await uploadImage(imageFile);
+      if (uploadResult && uploadResult.imageUrl) {
+        data.image = uploadResult.imageUrl;
+        animalEditForm.querySelector('input[name="image"]').value = uploadResult.imageUrl;
+      }
+    } catch (uploadError) {
+      animalFormResult.textContent = 'Ошибка загрузки изображения: ' + uploadError.message;
+      animalFormResult.classList.remove('text-green-500');
+      animalFormResult.classList.add('text-red-500');
+      return;
+    }
+  }
 
   animalFormResult.textContent = 'Сохранение...';
 
@@ -207,6 +257,7 @@ logoutAdminBtn?.addEventListener('click', async () => {
 
 // Загрузить животных при загрузке страницы
 window.addEventListener('DOMContentLoaded', async () => {
+  removeQueryParams();
   await loadAnimals(false); // Загрузить для всех пользователей
   await initAdminMode(); // Проверить, залогинен ли админ
 });

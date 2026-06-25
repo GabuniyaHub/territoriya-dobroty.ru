@@ -157,7 +157,7 @@
                     <i class="fas fa-times text-2xl"></i>
                 </button>
             </div>
-            <form id="admin-login-form" class="grid gap-4">
+            <form id="admin-login-form" class="grid gap-4" method="post" action="">
                 <input name="email" type="email" value="admin@territoriya-dobroty.ru" placeholder="Email" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
                 <input name="password" type="password" placeholder="Пароль" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
                 <button type="submit" class="btn-purple text-white py-3 rounded-xl font-semibold transition">Войти</button>
@@ -244,7 +244,7 @@
     <section id="animals" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-purple mb-2 font-['Playfair_Display']">Наши подопечные</h2>
-            <p class="text-center text-gray-500 mb-12">Они ждут своего человека — 15 хвостиков, и каждый особенный</p>
+            <p id="animal-count-subtitle" class="text-center text-gray-500 mb-12">Загружаем данные о животных...</p>
 
             <div id="admin-panel" class="hidden max-w-3xl mx-auto mb-8 p-6 bg-white rounded-3xl shadow-sm border border-purple/20">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -275,6 +275,12 @@
                         </select>
                         <input name="image" type="text" placeholder="Имя файла изображения" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
                     </div>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <label class="flex flex-col gap-2 text-sm text-gray-600">
+                            Загрузить фото
+                            <input id="animal-image-file" name="imageFile" type="file" accept="image/*" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" />
+                        </label>
+                    </div>
                     <input name="traits" type="text" placeholder="Характер" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required>
                     <textarea name="description" rows="3" placeholder="Описание" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:border-orange bg-white" required></textarea>
                     <div class="flex flex-wrap gap-3">
@@ -287,7 +293,7 @@
 
             <div id="animals-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
             <div class="text-center mt-8">
-                <p class="text-gray-500 text-sm">⭐ Всего 15 животных ищут дом. Поделитесь их историями, помогите найти семью!</p>
+                <p id="animal-count-text" class="text-gray-500 text-sm">⭐ Загружаем количество животных...</p>
             </div>
         </div>
     </section>
