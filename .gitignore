@@ -4,3 +4,6 @@ frontend/node_modules/
 *.log
 **/dev.db
 .DS_Store
+.env
+frontend/public/images/*.jpg
+frontend/public/images/*.png
