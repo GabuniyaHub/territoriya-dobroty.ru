@@ -7,3 +7,4 @@ frontend/node_modules/
 .env
 frontend/public/images/*.jpg
 frontend/public/images/*.png
+.env
